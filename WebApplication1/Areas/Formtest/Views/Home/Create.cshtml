@@ -1,0 +1,86 @@
+﻿@model WebApplication1.Areas.Formtest.Models.DocListViewModel
+
+@{
+    ViewData["Title"] = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>View</h1>
+
+<h4>DocListViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="View">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label "class="control-label">DocName</label>
+                <input class="form-control" />
+                <span asp-validation-for="DocName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Stage</label>
+                <input asp-for="Stage" class="form-control" />
+                <span asp-validation-for="Stage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Device</label>
+                <input asp-for="Device" class="form-control" />
+                <span asp-validation-for="Device" class="text-danger"></span>
+            </div>
+
+            <div>
+
+               <button id="btnaddColumn" type="button" class="btn btn-warning"> 加欄位 </button>
+
+               <div id="newColumn">
+
+               </div>
+
+            </div>
+
+            <br>
+            <br>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+ 
+<script>
+
+   $(document).ready(function(){
+      
+      var count=0;
+       
+      $("#btnaddColumn").click(function(){
+
+          var item = "<div id=newc["+count+"]'>"+
+           "<select name='choosetype["+count+"]' id='choosetype'> <option value='Information'>Information</option><option value='Parameter'>Parameter</option> <option value='Remark'>Remark</option></select>"
+           +"<input name ='newcolumn["+count+"]' class='form-control'/>"
+           +"<button name ='DelnewColumn["+count+"]' id='btnDelColumn' type='button' class='btn btn-danger delbtn'> 刪除 </button>"
+           +"</div>";
+          //$("<div id=newc["+count+"]'>").appendTo($("#newColumn"))
+          //$("<select name='choosetype["+count+"]' id='choosetype'> <option value='Information'>Information</option><option value='Parameter'>Parameter</option> <option value='Remark'>Remark</option></select>").appendTo($("#newColumn"))
+          //$("<input name ='newcolumn["+count+"]' class='form-control'/>").appendTo($("#newColumn"))
+          //$("<button name ='DelnewColumn["+count+"]' id='btnDelColumn' type='button' class='btn btn-danger'> 刪除 </button>").appendTo($("#newColumn"))
+           $("#newColumn").append(item);
+          count++;
+      });
+
+      $("#newColumn").on("click",".delbtn",function(){
+        $(this).parent('div').remove();
+      })
+
+
+   });
+</script>
+}
