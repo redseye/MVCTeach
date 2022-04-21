@@ -14,10 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Approve\Controller\" />
-    <Folder Include="Areas\Approve\Models\" />
-    <Folder Include="Areas\Approve\View\" />
-    <Folder Include="Areas\Formtest\Data\" />
     <Folder Include="BLL\" />
     <Folder Include="Common\" />
   </ItemGroup>
