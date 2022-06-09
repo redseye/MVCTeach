@@ -8,7 +8,7 @@
 <h1>View</h1>
 
 <p>
-    <a href="./Create" >Create New</a>
+    <a href="./Create">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -29,8 +29,9 @@
         </tr>
     </thead>
     <tbody>
-       @if(Model !=null)
-        @foreach (var item in Model) {
+        @if (Model != null)
+            @foreach (var item in Model)
+            {
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.DocName)
@@ -47,9 +48,42 @@
                     <td>
                         <button type="button" class="btn btn-warning">Edit</button>
                         <button type="button" class="btn btn-success">Detail</button>
-                        <button type="button" class="btn btn-danger">Delete</button>
+                        <button type="button" class="btn btn-danger FormDelete" >Delete</button>
+                        <span style = "display:none"  >@item.FormID </span>
                     </td>
                 </tr>
-        }
+            }
     </tbody>
 </table>
+
+@section Scripts {
+
+    <script>
+
+   $(document).ready(function(){
+
+       $(".FormDelete").click(function(e) {
+
+          $.ajax({
+              url:"@Url.Action("Delete")",
+              type:"POST",
+              dataType:"json",
+              data: {FORMID:$(e.target).next().text()},
+ 
+              success:function(res)
+              {
+                  location.reload();
+              },
+              
+              error:function(err)
+              {
+                  alert(err);
+              },
+            });
+
+
+       });
+
+   });
+    </script>
+}

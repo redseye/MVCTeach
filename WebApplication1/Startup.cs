@@ -6,8 +6,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+
 
 namespace WebApplication1
 {
@@ -23,6 +26,13 @@ namespace WebApplication1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IDbConnection, SqlConnection>(ServiceProvider =>
+            {
+                SqlConnection conn = new SqlConnection();
+                conn.ConnectionString = Configuration.GetConnectionString("UseDataBase");
+                                                                        
+                return conn;
+            });
             services.AddControllersWithViews();
         }
 

@@ -5,6 +5,7 @@ namespace WebApplication1.Areas.Formtest.Models
 {
     public class DocListViewModel
     {
+        public string FormID { get; set; }
         /// <summary>
         /// 文件名稱
         /// </summary>
