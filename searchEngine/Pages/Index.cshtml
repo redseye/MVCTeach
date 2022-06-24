@@ -1,0 +1,94 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Sidebar navigation Menu";
+
+    if(ViewData["Message"] != null)
+    {
+        <script>alert(@ViewData["Message"])</script>
+    }
+
+}
+
+        <div class="navigation">
+            <div class="menuToggle"></div>
+            <ul>
+                <li class="list active" style="--clr:#f44336;">
+                    <a href="#">
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <span class="text">Yield Summary</span>
+                    </a>
+                </li>
+                <li class="list" style="--clr:#2196f3;">
+                    <a href="#">
+                        <span class="icon"><ion-icon name="pricetag-outline"></ion-icon></span>
+                        <span class="text">Closed Yield</span>
+                    </a>
+                </li>
+                <li class="list" style="--clr:#ffa117;">
+                    <a href="#">
+                        <span class="icon"><ion-icon name="create-outline"></ion-icon></span>
+                        <span class="text">Daily Qty</span>
+                    </a>
+                </li>
+                <li class="list" style="--clr:#b145e9;">
+                    <a href="#">
+                        <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
+                        <span class="text">Daily defect</span>
+                    </a>
+                </li>
+                <li class="list" style="--clr:#b145e9;">
+                    <a href="#">
+                        <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
+                        <span class="text">Upload Excel</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="interface">
+
+        <form action="./Import/Upload" enctype="multipart/form-data" method="post"> 
+        <input type="file" class="form-control" name="file" />
+        <button type="submit" class="btn btn-primary" >Upload</button>
+        </form>>
+        
+
+            <br/>
+            <br/>
+            <br/>
+            
+            <td><b>Cust3Code:</b></td>
+            <td>
+                <select id="Cust3Code" style="width: 240px; height: 30px;">
+                    <option selected></option>
+                    <option value="QCM">QCM</option>
+                    <option value="USL">USL</option>
+                    <option value="SPX">SPX</option>
+                </select>
+            </td>
+            <td><b>Device Name:</b></td>
+            <td><input type="text" name="txtDevice" style="width: 240px; height: 30px;"></td>
+            <td><b>Plant:</b></td>
+            <td>
+                <select id="Plant" style="width: 240px; height: 30px;">
+                    <option selected></option>
+                    <option value="ASES1">ASES1</option>
+                    <option value="ASES3">ASES3</option>
+                </select>
+            </td>
+            <td><b><lebel id="Date" style="width: 240px; height: 30px;">Date:</lebel></b></td>
+            <td>
+                <input id="txtDateStart" class="from-control hasDatepicker" type="date" style="width: 240px; height: 30px;">
+                <span>to</span>
+                <input id="txtDateEnd" class="from-control hasDatepicker" type="date" style="width: 240px; height: 30px;">
+            </td>
+            <br/>
+            <br/>
+            <br/>
+            <button id="buttonQuery" type="button" style="width: 100px; height: 30px;">Query</button>
+            
+         </div>
+
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
